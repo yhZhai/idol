@@ -1,2 +1,477 @@
-Hello world!
-<p>IDOL</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNS69VJVZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NNS69VJVZG');
+  </script>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="IDOL: Unified Dual-Modal Latent Diffusion for 3D Human-Centric Video Generation">
+  <meta property="og:title" content="IDOL: Unified Dual-Modal Latent Diffusion for Human-Centric
+              Joint Video-Depth Generation" />
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/images/teaser.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+
+  <meta name="twitter:title" content="IDOL: Unified Dual-Modal Latent Diffusion for Human-Centric
+              Joint Video-Depth Generation">
+  <meta name="twitter:description" content="IDOL: Unified Dual-Modal Latent Diffusion for Human-Centric
+              Joint Video-Depth Generation">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/teaser.png">
+  <meta name="twitter:card" content="static/images/teaser.png">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>IDOL: Unified Dual-Modal Latent Diffusion for 3D Human-Centric Video Generation</title>
+  <link rel="icon" type="image/x-icon" href="static/images/banner.ico">
+  <link
+    href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro|Open+Sans&effect=shadow-multiple|emboss|3d"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 2px solid #F1F4F5;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(3n - 1) {
+      background-color: #F1F4F5;
+    }
+
+    tr:nth-child(3n) {
+      border: 2px solid #FFFFFF;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body gray-bg">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">IDOL: Unified Dual-Modal Latent Diffusion for Human-Centric
+              Joint Video-Depth Generation</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://www.yhzhai.com/">Yuanhao Zhai</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=en&user=LKSy1kwAAAAJ">Kevin Lin</a><sup>2</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=en&user=WR875gYAAAAJ">Linjie Li</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=en&user=legkbM0AAAAJ">Chung-Ching Lin</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="http://jianfengwang.me">Jianfeng Wang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://zyang-ur.github.io">Zhengyuan Yang</a><sup>2</sup>,
+              </span><br>
+              <span class="author-block">
+                <a href="https://cse.buffalo.edu/~doermann/">David Doermann</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://cse.buffalo.edu/~jsyuan/">Junsong Yuan</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=en&user=bkALdvsAAAAJ">Zicheng Liu</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=en&user=cDcWXuIAAAAJ">Lijuan Wang</a><sup>2</sup>
+              </span>
+
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>State University of New York at Buffalo</span>,
+              <span class="author-block"><sup>2</sup>Microsoft</span>,
+              <span class="author-block"><sup>3</sup>Advanced Micro Devices</span>
+              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <!-- <span class="link-block"> -->
+                <!-- <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" -->
+                <!-- class="external-link button is-normal is-rounded is-dark"> -->
+                <!-- <span class="icon"> -->
+                <!-- <i class="fas fa-file-pdf"></i> -->
+                <!-- </span> -->
+                <!-- <span>Paper</span> -->
+                <!-- </a> -->
+                <!-- </span> -->
+
+                <!-- Supplementary PDF link -->
+                <!-- <span class="link-block"> -->
+                <!-- <a href="static/pdfs/supplementary_material.pdf" target="_blank" -->
+                <!-- class="external-link button is-normal is-rounded is-dark"> -->
+                <!-- <span class="icon"> -->
+                <!-- <i class="fas fa-file-pdf"></i> -->
+                <!-- </span> -->
+                <!-- <span>Supplementary</span> -->
+                <!-- </a> -->
+                <!-- </span> -->
+
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/yhZhai/idol" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay loop muted preload webkit-playsinline="true" playsinline
+          x5-video-player-type="h5" x5-video-player-fullscreen="true">
+          <!-- Your video here -->
+          <source src="static/videos/teaser.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          Given input reference pose sequence, foreground and background images, IDOL faithfully animates the human
+          foreground into the pose sequence and generates the corresponding depth map, which can be rendered as 2.5D
+          videos.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser video -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Significant advances have been made in human-centric video generation, yet the joint video-depth
+              generation problem
+              remains underexplored. Most existing monocular depth estimation methods may not generalize well to
+              synthesized images or
+              videos, and multi-view-based methods have difficulty controlling the human appearance and motion. In this
+              work, we
+              present IDOL (unIfied Dual-mOdal Latent diffusion) for high-quality human-centric joint video-depth
+              generation. Our IDOL
+              consists of two novel designs. First, to enable dual-modal generation and maximize the information
+              exchange between
+              video and depth generation, we propose a unified dual-modal U-Net, a parameter-sharing framework for joint
+              video and
+              depth denoising, wherein a modality label guides the denoising target, and cross-modal attention enables
+              the mutual
+              information flow. Second, to ensure a precise video-depth spatial alignment, we propose a motion
+              consistency loss that
+              enforces consistency between the video and depth feature motion fields, leading to harmonized outputs.
+              Additionally, a
+              cross-attention map consistency loss is applied to align the cross-attention map of the video denoising
+              with that of the
+              depth denoising, further facilitating spatial alignment. Extensive experiments on the TikTok and NTU120
+              datasets show
+              our superior performance, significantly surpassing existing methods in terms of video FVD and depth
+              accuracy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <section class="section" id="Method">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Method</h2>
+      <section class="hero method">
+        <div class="container is-max-desktop">
+          <div class="hero-body">
+            <h3 class="title">Unified dual-modal U-Net</h3>
+            <img id="method" autoplay muted loop playsinline height="100%" src="./static/images/structure.jpg"
+              style="width:100%;height:100%;">
+            <p>
+              Left: <strong>Overall model architecture.</strong> Our IDOL
+              features a unified dual-modal U-Net (gray boxes), a
+              parameter-sharing design for joint video-depth denoising, wherein
+              the denoising target is controlled by a one-hot modality label
+              (\(y_{\text{v}}\) for video and \(y_\text{d}\) for depth).
+            </p>
+            <p>
+              Right: <strong>U-Net block structure.</strong> Cross-modal
+              attention is added to enable mutual information flow between video
+              and depth features, with consistency loss terms
+              \(\mathcal{L}_{\text{mo}}\) and \(\mathcal{L}_{\text{xattn}}\)
+              ensuring the video-depth alignment. Skip connections are omitted
+              for conciseness.
+            </p>
+            <h3 class="title">Learning video-depth consistency</h3>
+            <div class="content-container">
+              <img id="method" autoplay muted loop playsinline height="100%" src="./static/images/cost-volume.jpg"
+                style="width:50%;height:auto;">
+              <p class="content-text">
+                Visualization of the video and depth feature maps and their motion fields without consistency losses.
+                We attribute the inconsistent video-depth output (blue circle) to the
+                inconsistent video-depth feature motions (the last row).
+                This problem exists in multiples layers within the U-Net, and we randomly select
+                layer 4 and 7 in the up block for visualization.
+                For the feature map visualization, we follow <a
+                  href="https://arxiv.org/abs/2211.12572">Plug-and-Play</a> to apply
+                PCA on the video and depth features at each individual layers, and render the
+                first three components.
+                The motion field is visualized similar to optical flow, where different color
+                indicates different moving direction.
+              </p>
+            </div>
+            <p>
+              To promote video-depth consistency, we propose a motion consistency loss \(\mathcal{L}_{\text{mo}}\) to
+              synchronize the video and depth feature motions, and a cross-attention map consistency loss
+              \(\mathcal{L}_{\text{xattn}}\) to align the cross-attention map of the video denoising with that of the
+              depth denoising.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+
+
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <!-- Paper video. -->
+        <h2 class="title is-3">Pose Editing Comparison</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <!-- example 1 -->
+            <!-- <p align="left"> -->
+              <!-- <b>Compared with other multi-modal generation methods (MM-Diffusion and LDM3D), our IDOL generates (1) spatial-aligned video and depth, (2) smoother video, and (3) better preserves the human identity.</b> -->
+            <!-- </p> -->
+            <video poster="" id="tree" autoplay loop muted preload webkit-playsinline="true" playsinline
+              x5-video-player-type="h5" x5-video-player-fullscreen="true">
+              <source src="static/videos/video-depth-comp-1.mp4" type="video/mp4">
+            </video>
+            <p style="margin-bottom: 20px;">Example #1</p>
+            <!-- example 2 -->
+            <video poster="" id="tree" autoplay loop muted preload webkit-playsinline="true" playsinline
+              x5-video-player-type="h5" x5-video-player-fullscreen="true">
+              <source src="static/videos/video-depth-comp-2.mp4" type="video/mp4">
+            </video>
+            <p style="margin-bottom: 20px;">Example #2</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <!-- Paper video. -->
+        <h2 class="title is-3">Foreground-Background Composition</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <!-- example 1 -->
+            <!-- <p align="left"> -->
+              <!-- <b>Compared with other multi-modal generation methods (MM-Diffusion and LDM3D), our IDOL generates (1) spatial-aligned video and depth, (2) smoother video, and (3) better preserves the human identity.</b> -->
+            <!-- </p> -->
+            <video poster="" id="tree" autoplay loop muted preload webkit-playsinline="true" playsinline
+              x5-video-player-type="h5" x5-video-player-fullscreen="true">
+              <source src="static/videos/diff-bg.mp4" type="video/mp4">
+            </video>
+            <p style="margin-bottom: 20px;">Background editing examples</p>
+            <!-- example 2 -->
+            <video poster="" id="tree" autoplay loop muted preload webkit-playsinline="true" playsinline
+              x5-video-player-type="h5" x5-video-player-fullscreen="true">
+              <source src="static/videos/diff-fg.mp4" type="video/mp4">
+            </video>
+            <p style="margin-bottom: 20px;">Foreground editing examples</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <!-- Paper video. -->
+        <h2 class="title is-3">2.5D Video Comparison</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <!-- example 1 -->
+            <p align="left" style="margin-bottom: 20px;">
+              <b><font size="4">Compared with other multi-modal generation methods (<a href="https://arxiv.org/abs/2212.09478">MM-Diffusion</a> and <a href="https://arxiv.org/abs/2305.10853">LDM3D</a>), our IDOL generates (1) spatial-aligned video and depth, (2) smoother video, and (3) better preserves the human identity.</font></b>
+
+            </p>
+            <video poster="" id="tree" autoplay loop muted preload webkit-playsinline="true" playsinline
+              x5-video-player-type="h5" x5-video-player-fullscreen="true">
+              <source src="static/videos/2.5d-1.mp4" type="video/mp4">
+            </video>
+            <p style="margin-bottom: 20px;">Example on TikTok videos</p>
+            <!-- example 2 -->
+            <video poster="" id="tree" autoplay loop muted preload webkit-playsinline="true" playsinline
+              x5-video-player-type="h5" x5-video-player-fullscreen="true">
+              <source src="static/videos/2.5d-2.mp4" type="video/mp4">
+            </video>
+            <p style="margin-bottom: 20px;">Example on NTU120 videos</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+    <section class="section hero" id="quantitative">
+      <div class="container is-max-desktop content">
+        <h2 class="title">Quantitative Comparison</h2>
+        <section class="hero method">
+          <div class="container is-max-desktop">
+            <div class="hero-body">
+              <img id="motivation" autoplay muted preload webkit-playsinline="true" playsinline x5-video-player-type="h5"
+                x5-video-player-fullscreen="true" loop webkit-playsinline="true" playsinline x5-video-player-type="h5"
+                x5-video-player-fullscreen="true" height="100%" src="static/images/quan.png"
+                style="width:100%;height:100%;">
+              <p>
+                Our IDOL achieves the best video and depth generation quality on the TikTok and NTU120 datasets.
+              </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+  <section class="section" id='RelatedLinks'>
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgement</h2>
+      <p>Our IDOL is developed based on <a href="https://disco-dance.github.io">DisCo: Disentangled Control for
+          Referring Human Dance Generation in Real World</a>.</p>
+      <p>We thank <a href="https://wangt-cn.github.io">Tan Wang</a> from Nanyang
+        Technological University for value feedback and discussion.</p>
+      </ul>
+
+    </div>
+  </section>
+  </div>
+  </section>
+
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{zhai2024idol,
+  title={IDOL: Unified Dual-Modal Latent Diffusion for Human-Centric Joint Video-Depth Generation},
+  author={Zhai, Yuanhao and Lin, Kevin and Li, Linjie and Lin, Chung-Ching and Wang, Jianfeng and Yang, Zhengyuan and Doermann, David and Yuan, Junsong and Liu, Zicheng and Wang, Lijuan},
+  year={2024},
+  booktitle={Proceedings of the European Conference on Computer Vision},
+}</code></pre>
+    </div>
+  </section>
+  <!--End BibTex citation -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              <br> This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
